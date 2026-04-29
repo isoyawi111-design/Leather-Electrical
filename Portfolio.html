@@ -1,0 +1,463 @@
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Zap, Upload, X, ChevronRight } from "lucide-react";
+import { Link } from "wouter";
+import { useState } from "react";
+
+/**
+ * Portfolio Page - Leather Electrical
+ * Design: Industrial Minimalism
+ * - Gallery of completed work
+ * - Photo upload functionality for work documentation
+ * - Project categorization
+ * - Lightbox viewer
+ */
+
+interface PortfolioItem {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  date: string;
+}
+
+const DEFAULT_PORTFOLIO: PortfolioItem[] = [
+  {
+    id: "1",
+    title: "Vodafone PNG Network Rollout",
+    category: "Telecommunications",
+    description: "Multi-province antenna installation and telecommunications infrastructure across Morobe, Eastern Highlands, Madang, and West New Britain (2020-2024).",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663612432874/5muACFDFmirqRbXYKufSAt/hero-telecommunications-Gotk3dUnhHq2CPnPMWwBTa.webp",
+    date: "2024"
+  },
+  {
+    id: "2",
+    title: "Industrial Generator Installation",
+    category: "Power Solutions",
+    description: "Large-scale genset installation and commissioning for industrial facilities with precision electrical integration and control systems.",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663612432874/5muACFDFmirqRbXYKufSAt/hero-genset-installation-6gfGWWMigBiaks9ZAPpV5D.webp",
+    date: "2023"
+  },
+  {
+    id: "3",
+    title: "ANGAU Hospital Redevelopment",
+    category: "Power & Infrastructure",
+    description: "Complete electrical system upgrade for major healthcare facility including power distribution and emergency backup systems (October 2018 - January 2019).",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663612432874/5muACFDFmirqRbXYKufSAt/hero-electrical-work-BMoAZDNmTZ3dZ4UyTxahdg.webp",
+    date: "2019"
+  },
+  {
+    id: "4",
+    title: "Enga Teachers College Power System",
+    category: "Power Solutions",
+    description: "Electrical installation and power system setup for educational institution under PJV Tax Credit Scheme (2019-Present).",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663612432874/5muACFDFmirqRbXYKufSAt/hero-electrical-work-BMoAZDNmTZ3dZ4UyTxahdg.webp",
+    date: "2019"
+  },
+  {
+    id: "5",
+    title: "MONPI Coffee Factory Installations",
+    category: "Industrial",
+    description: "Industrial electrical installations for two factory facilities including power distribution and equipment integration (2020).",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663612432874/5muACFDFmirqRbXYKufSAt/hero-genset-installation-6gfGWWMigBiaks9ZAPpV5D.webp",
+    date: "2020"
+  },
+  {
+    id: "6",
+    title: "University of Goroka Gen Set Maintenance",
+    category: "Maintenance",
+    description: "Ongoing generator maintenance and support services for educational institution (2020-Present).",
+    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663612432874/5muACFDFmirqRbXYKufSAt/hero-telecommunications-Gotk3dUnhHq2CPnPMWwBTa.webp",
+    date: "2020"
+  }
+];
+
+export default function Portfolio() {
+  const [portfolio, setPortfolio] = useState<PortfolioItem[]>(DEFAULT_PORTFOLIO);
+  const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
+  const [filterCategory, setFilterCategory] = useState<string>("All");
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [dragActive, setDragActive] = useState(false);
+
+  const categories = ["All", "Power Solutions", "Telecommunications", "Industrial", "Maintenance", "Power & Infrastructure"];
+  
+  const filteredPortfolio = filterCategory === "All" 
+    ? portfolio 
+    : portfolio.filter(item => item.category === filterCategory);
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      const files = Array.from(e.dataTransfer.files);
+      setUploadedFiles(prev => [...prev, ...files]);
+    }
+  };
+
+  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const files = Array.from(e.target.files);
+      setUploadedFiles(prev => [...prev, ...files]);
+    }
+  };
+
+  const removeUploadedFile = (index: number) => {
+    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-b border-border">
+        <div className="container py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+              <Zap className="w-6 h-6 text-accent-foreground" />
+            </div>
+            <span className="text-xl font-bold text-foreground">Leather Electrical</span>
+          </Link>
+          <div className="hidden md:flex items-center gap-8">
+            <Link href="/" className="text-foreground hover:text-accent transition-colors">Home</Link>
+            <Link href="/services" className="text-foreground hover:text-accent transition-colors">Services</Link>
+            <Link href="/portfolio" className="text-accent font-semibold">Portfolio</Link>
+            <Link href="/about" className="text-foreground hover:text-accent transition-colors">About</Link>
+            <Link href="/contact" className="text-foreground hover:text-accent transition-colors">Contact</Link>
+          </div>
+          <Link href="/contact">
+            <Button variant="default" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+              Get Quote
+            </Button>
+          </Link>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-16">
+        <div className="container">
+          <div className="text-label text-accent mb-4">PORTFOLIO</div>
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+            Our Completed Projects
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-3xl">
+            Explore our portfolio of successful electrical and telecommunications projects across Papua New Guinea. From industrial installations to nationwide network rollouts, we deliver excellence.
+          </p>
+        </div>
+      </section>
+
+      {/* Filter Section */}
+      <section className="py-8 bg-card/50 sticky top-24 z-40">
+        <div className="container">
+          <div className="flex flex-wrap gap-3">
+            {categories.map(category => (
+              <button
+                key={category}
+                onClick={() => setFilterCategory(category)}
+                className={`px-6 py-2 rounded-lg transition-all ${
+                  filterCategory === category
+                    ? "bg-accent text-accent-foreground"
+                    : "bg-card border border-border text-foreground hover:border-accent"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Grid */}
+      <section className="py-20">
+        <div className="container">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {filteredPortfolio.map(item => (
+              <div
+                key={item.id}
+                onClick={() => setSelectedItem(item)}
+                className="group cursor-pointer"
+              >
+                <div className="relative h-64 bg-card rounded-lg overflow-hidden mb-4">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div>
+                      <div className="text-label text-accent mb-2">{item.category}</div>
+                      <div className="flex items-center gap-2 text-white">
+                        <span>View Details</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-accent transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-2">{item.description}</p>
+                <p className="text-xs text-muted-foreground">{item.date}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Upload Section */}
+      <section className="py-20 bg-card/50">
+        <div className="container">
+          <div className="mb-12">
+            <div className="text-label text-accent mb-4">UPLOAD YOUR WORK</div>
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Document Your Completed Projects
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl">
+              Upload photos of your electrical and telecommunications work to showcase your expertise. Include clear images of installations, completed systems, and project sites.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Upload Area */}
+            <div>
+              <div
+                onDragEnter={handleDrag}
+                onDragLeave={handleDrag}
+                onDragOver={handleDrag}
+                onDrop={handleDrop}
+                className={`border-2 border-dashed rounded-lg p-12 text-center transition-colors ${
+                  dragActive
+                    ? "border-accent bg-accent/10"
+                    : "border-border hover:border-accent"
+                }`}
+              >
+                <Upload className="w-12 h-12 text-accent mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-foreground mb-2">Drop Files Here</h3>
+                <p className="text-muted-foreground mb-6">
+                  Drag and drop your work photos here, or click to browse
+                </p>
+                <label className="inline-block">
+                  <input
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={handleFileInput}
+                    className="hidden"
+                  />
+                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground cursor-pointer">
+                    Browse Files
+                  </Button>
+                </label>
+                <p className="text-xs text-muted-foreground mt-4">
+                  Supported formats: JPG, PNG, WebP (Max 10MB per file)
+                </p>
+              </div>
+            </div>
+
+            {/* Upload Guidelines */}
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-6">Upload Guidelines</h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-lg font-semibold text-accent mb-2">What to Include</h4>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-3">
+                      <span className="text-accent mt-1">▸</span>
+                      <span>Electrical panel installations and wiring work</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-accent mt-1">▸</span>
+                      <span>Generator installations and commissioning</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-accent mt-1">▸</span>
+                      <span>Telecommunications tower and antenna work</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-accent mt-1">▸</span>
+                      <span>Project sites and completed installations</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-accent mt-1">▸</span>
+                      <span>Before and after comparisons</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-accent mb-2">Photo Tips</h4>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-3">
+                      <span className="text-accent mt-1">▸</span>
+                      <span>Use good lighting to showcase the work clearly</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-accent mt-1">▸</span>
+                      <span>Include wide shots and close-up details</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-accent mt-1">▸</span>
+                      <span>Ensure images are in focus and properly composed</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="text-accent mt-1">▸</span>
+                      <span>High-resolution images work best</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Uploaded Files List */}
+          {uploadedFiles.length > 0 && (
+            <div className="mt-12">
+              <h3 className="text-xl font-bold text-foreground mb-6">Uploaded Files ({uploadedFiles.length})</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {uploadedFiles.map((file, idx) => (
+                  <div key={idx} className="bg-background border border-border rounded-lg p-4 flex items-center justify-between">
+                    <div className="flex-1">
+                      <p className="text-foreground font-semibold truncate">{file.name}</p>
+                      <p className="text-sm text-muted-foreground">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                    </div>
+                    <button
+                      onClick={() => removeUploadedFile(idx)}
+                      className="ml-4 p-2 hover:bg-card rounded-lg transition-colors"
+                    >
+                      <X className="w-5 h-5 text-muted-foreground hover:text-accent" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 flex gap-4">
+                <Button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6">
+                  Submit All Files
+                </Button>
+                <Button
+                  variant="outline"
+                  className="border-border text-foreground hover:bg-card px-8 py-6"
+                  onClick={() => setUploadedFiles([])}
+                >
+                  Clear All
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      {selectedItem && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+          onClick={() => setSelectedItem(null)}
+        >
+          <div
+            className="bg-card rounded-lg max-w-3xl w-full max-h-[90vh] overflow-auto"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="relative">
+              <button
+                onClick={() => setSelectedItem(null)}
+                className="absolute top-4 right-4 z-10 bg-background/80 hover:bg-background p-2 rounded-lg transition-colors"
+              >
+                <X className="w-6 h-6 text-foreground" />
+              </button>
+              <img
+                src={selectedItem.image}
+                alt={selectedItem.title}
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="p-8">
+              <div className="text-label text-accent mb-3">{selectedItem.category}</div>
+              <h2 className="text-3xl font-bold text-foreground mb-4">{selectedItem.title}</h2>
+              <p className="text-muted-foreground mb-6 leading-relaxed">{selectedItem.description}</p>
+              <p className="text-sm text-muted-foreground">Project Year: {selectedItem.date}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="container text-center">
+          <h2 className="text-4xl font-bold text-foreground mb-6">
+            Ready to Start Your Project?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Contact our team to discuss your electrical or telecommunications needs. We will provide a customized solution for your project.
+          </p>
+          <Link href="/contact">
+            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6 text-base">
+              Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-background border-t border-border py-12">
+        <div className="container">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-accent-foreground" />
+                </div>
+                <span className="font-bold text-foreground">Leather Electrical</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                PNG's trusted power and telecommunications contractor since 2011.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-foreground mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><Link href="/" className="hover:text-accent transition-colors">Home</Link></li>
+                <li><Link href="/services" className="hover:text-accent transition-colors">Services</Link></li>
+                <li><Link href="/about" className="hover:text-accent transition-colors">About Us</Link></li>
+                <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-foreground mb-4">Contact Info</h4>
+              <p className="text-sm text-muted-foreground mb-2">
+                <strong>Email:</strong> leatherelectrical.lec@gmail.com
+              </p>
+              <p className="text-sm text-muted-foreground mb-2">
+                <strong>Phone:</strong> +675 7903 3097 / 7652 4511
+              </p>
+              <p className="text-sm text-muted-foreground">
+                <strong>Available:</strong> 24/7
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-foreground mb-4">Service Areas</h4>
+              <ul className="space-y-1 text-sm text-muted-foreground">
+                <li>Jiwaka Province</li>
+                <li>Enga Province</li>
+                <li>Morobe Province</li>
+                <li>Madang Province</li>
+                <li>Eastern Highlands</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+            <p>&copy; 2024 Leather Electrical. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
