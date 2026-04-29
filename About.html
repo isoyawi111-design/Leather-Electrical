@@ -1,0 +1,279 @@
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Zap, Users, Award, Briefcase } from "lucide-react";
+import { Link } from "wouter";
+
+export default function About() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-b border-border">
+        <div className="container py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+              <Zap className="w-6 h-6 text-accent-foreground" />
+            </div>
+            <span className="text-xl font-bold text-foreground">Leather Electrical</span>
+          </Link>
+          <div className="hidden md:flex items-center gap-8">
+            <Link href="/" className="text-foreground hover:text-accent transition-colors">Home</Link>
+            <Link href="/services" className="text-foreground hover:text-accent transition-colors">Services</Link>
+            <Link href="/portfolio" className="text-foreground hover:text-accent transition-colors">Portfolio</Link>
+            <Link href="/about" className="text-accent font-semibold">About</Link>
+            <Link href="/contact" className="text-foreground hover:text-accent transition-colors">Contact</Link>
+          </div>
+          <Link href="/contact">
+            <Button variant="default" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+              Get Quote
+            </Button>
+          </Link>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-16">
+        <div className="container">
+          <div className="text-label text-accent mb-4">ABOUT US</div>
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+            Leather Electrical: Powering PNG Since 2011
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-3xl">
+            A 100% Papua New Guinea owned contracting firm specializing in comprehensive power and telecommunications solutions. We are committed to delivering world-class service with integrity, expertise, and reliability.
+          </p>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-20 bg-card/50">
+        <div className="container">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-3xl font-bold text-foreground mb-4">Our Mission</h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                We strive to be recognized as one of the leading world-class electrical construction companies in our core business activities both within PNG and abroad. The cornerstone of our existence and success is to develop a winning team that understands the needs of the people, generates new ideas, and solves development-oriented problems with the community we serve.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                This is achieved by optimizing time, cost, and quality aspects of any project into a unified whole, and providing opportunities to disadvantaged communities through promoting, fostering, and encouraging capacity development and skills transfer.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-foreground mb-4">Our Vision</h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Our vision drives the company towards the fulfillment of becoming a world-class electrical construction firm that will succeed in the marketplace through the delivery of quality service. Leather Electrical's philosophy derives from the cooperation of teamwork, both within the organization and with our customers.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                We are committed to building long-term partnerships based on trust, reliability, and exceptional service delivery. Every project is an opportunity to demonstrate our commitment to excellence and to contribute to PNG's development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20">
+        <div className="container">
+          <div className="mb-16">
+            <div className="text-label text-accent mb-4">OUR TEAM</div>
+            <h2 className="text-4xl font-bold text-foreground">
+              Professional Leadership & Expertise
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                name: "Ben Gurame",
+                position: "Managing Director",
+                trade: "Licensed Electrician",
+                qualification: "Don Bosco Technical College",
+                experience: "IPI, PJV - Electrician",
+                contact: "79033097 / 76524511"
+              },
+              {
+                name: "Manu Miamel",
+                position: "Project Engineer",
+                trade: "Applied Physics",
+                qualification: "Bachelor of Science in Applied Physics (PNG UoT, 2013)",
+                experience: "Technical Officer - Master System Technologies Ltd (2014-2016)",
+                contact: "76532121"
+              },
+              {
+                name: "James Krugol",
+                position: "Administration Secretary",
+                trade: "Administration",
+                qualification: "Innovative Training Centre (2009)",
+                experience: "Leather Electrical",
+                contact: "Available upon request"
+              },
+              {
+                name: "Jacob Bii Wingah",
+                position: "Electrical Supervisor",
+                trade: "Tradesman",
+                qualification: "Trade Certification",
+                experience: "Electrical Supervision & Installation",
+                contact: "Available upon request"
+              },
+              {
+                name: "Jordan Andy",
+                position: "Rigger/Installer/Field Engineer",
+                trade: "Communications Technician",
+                qualification: "Technical Vocational College",
+                experience: "Vodafone PNG, Digicel PNG, NCRL, 3M",
+                contact: "Available upon request"
+              },
+              {
+                name: "Edward Tau",
+                position: "Licensed Electrician",
+                trade: "Electrician",
+                qualification: "Goroka Technical College (1993)",
+                experience: "26 years in electrical trade",
+                contact: "Available upon request"
+              },
+              {
+                name: "Nicky Mamoli",
+                position: "Electrician",
+                trade: "Electrician",
+                qualification: "POM Tech - Electrical Trade",
+                experience: "PNG Banking Corporation Building, Lae (2018-2019)",
+                contact: "Available upon request"
+              }
+            ].map((member, idx) => (
+              <div key={idx} className="bg-card border border-border rounded-lg p-8">
+                <h3 className="text-xl font-bold text-foreground mb-2">{member.name}</h3>
+                <p className="text-accent font-semibold mb-4">{member.position}</p>
+                <div className="space-y-3 text-sm text-muted-foreground">
+                  <p><strong>Trade:</strong> {member.trade}</p>
+                  <p><strong>Qualification:</strong> {member.qualification}</p>
+                  <p><strong>Experience:</strong> {member.experience}</p>
+                  <p><strong>Contact:</strong> {member.contact}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="py-20 bg-card/50">
+        <div className="container">
+          <div className="mb-16">
+            <div className="text-label text-accent mb-4">WHY CHOOSE US</div>
+            <h2 className="text-4xl font-bold text-foreground">
+              Our Core Values
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                icon: Award,
+                title: "Expertise and Experience",
+                description: "Our professionals have over 13 years of experience in the power and telecommunications industries in PNG. Their vast knowledge and expertise enable us to handle complex projects efficiently."
+              },
+              {
+                icon: Users,
+                title: "Certified Professionals",
+                description: "We have a team of certified power engineers, electricians, communications engineers, technicians, and riggers who are well-equipped to handle diverse requirements and ensure high-quality service delivery."
+              },
+              {
+                icon: Briefcase,
+                title: "Quality Workmanship",
+                description: "At Leather Electrical, we prioritize quality in every aspect of our work. We use reliable products, adhere to industry standards, and follow best practices to deliver outstanding results."
+              },
+              {
+                icon: Zap,
+                title: "Customer-Centric Approach",
+                description: "We strive to understand our clients' unique needs and provide customized solutions that meet their specific requirements. We value long-term relationships and are committed to satisfaction."
+              },
+              {
+                icon: Award,
+                title: "Timely Project Completion",
+                description: "We understand the importance of deadlines. Our team is dedicated to completing projects within the agreed-upon timeframe, ensuring minimal disruption to your operations."
+              },
+              {
+                icon: Users,
+                title: "24/7 Availability",
+                description: "We are available around the clock to provide emergency support, maintenance, and consultation services. Your operational continuity is our priority."
+              }
+            ].map((value, idx) => (
+              <div key={idx} className="bg-background border border-border rounded-lg p-8">
+                <value.icon className="w-10 h-10 text-accent mb-4" />
+                <h3 className="text-xl font-bold text-foreground mb-3">{value.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="container text-center">
+          <h2 className="text-4xl font-bold text-foreground mb-6">
+            Ready to Partner With Us?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Contact our team today to discuss your power and telecommunications needs. We are committed to delivering solutions that exceed your expectations.
+          </p>
+          <Link href="/contact">
+            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6 text-base">
+              Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-background border-t border-border py-12">
+        <div className="container">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-accent-foreground" />
+                </div>
+                <span className="font-bold text-foreground">Leather Electrical</span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                PNG's trusted power and telecommunications contractor since 2011.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-foreground mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><Link href="/" className="hover:text-accent transition-colors">Home</Link></li>
+                <li><Link href="/services" className="hover:text-accent transition-colors">Services</Link></li>
+                <li><Link href="/portfolio" className="hover:text-accent transition-colors">Portfolio</Link></li>
+                <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-foreground mb-4">Contact Info</h4>
+              <p className="text-sm text-muted-foreground mb-2">
+                <strong>Email:</strong> leatherelectrical.lec@gmail.com
+              </p>
+              <p className="text-sm text-muted-foreground mb-2">
+                <strong>Phone:</strong> +675 7903 3097 / 7652 4511
+              </p>
+              <p className="text-sm text-muted-foreground">
+                <strong>Available:</strong> 24/7
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-foreground mb-4">Service Areas</h4>
+              <ul className="space-y-1 text-sm text-muted-foreground">
+                <li>Jiwaka Province</li>
+                <li>Enga Province</li>
+                <li>Morobe Province</li>
+                <li>Madang Province</li>
+                <li>Eastern Highlands</li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+            <p>&copy; 2024 Leather Electrical. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
