@@ -1,408 +1,463 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Radio, Wrench, Shield, Clock, Award } from "lucide-react";
-import { Link } from "wouter";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leather Electrical | Your Electrical Specialist</title>
 
-/**
- * Home Page - Leather Electrical
- * Design: Industrial Minimalism
- * - Hero section with compelling value proposition
- * - Services overview with icons
- * - Why choose us section with key differentiators
- * - Call-to-action sections
- * - Contact information
- */
-
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-b border-border">
-        <div className="container py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-              <Zap className="w-6 h-6 text-accent-foreground" />
-            </div>
-            <span className="text-xl font-bold text-foreground">Leather Electrical</span>
-          </div>
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-foreground hover:text-accent transition-colors">Home</Link>
-            <Link href="/services" className="text-foreground hover:text-accent transition-colors">Services</Link>
-            <Link href="/portfolio" className="text-foreground hover:text-accent transition-colors">Portfolio</Link>
-            <Link href="/about" className="text-foreground hover:text-accent transition-colors">About</Link>
-            <Link href="/contact" className="text-foreground hover:text-accent transition-colors">Contact</Link>
-          </div>
-          <Button variant="default" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-            Get Quote
-          </Button>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
-        {/* Background image with overlay */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: "url('https://d2xsxph8kpxj0f.cloudfront.net/310519663612432874/5muACFDFmirqRbXYKufSAt/hero-electrical-work-BMoAZDNmTZ3dZ4UyTxahdg.webp')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
-        </div>
-
-        <div className="container relative z-10">
-          <div className="max-w-2xl">
-            <div className="text-label text-accent mb-4">POWER & TELECOMMUNICATIONS</div>
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-              Reliable Electrical Solutions for PNG
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Leather Electrical delivers world-class power and telecommunications solutions. With certified engineers and over a decade of industry experience, we handle projects from 5kVA to 970kVA generators, industrial wiring, and nationwide telecommunications infrastructure.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact">
-                <Button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6 text-base">
-                  Start Your Project <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Button variant="outline" className="border-border text-foreground hover:bg-card px-8 py-6 text-base">
-                View Our Work
-              </Button>
-            </div>
-            <div className="mt-12 flex items-center gap-8 text-sm">
-              <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-accent" />
-                <span>Available 24/7</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-accent" />
-                <span>Licensed & Insured</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Award className="w-5 h-5 text-accent" />
-                <span>13+ Years Experience</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Overview */}
-      <section className="py-20 bg-card/50">
-        <div className="container">
-          <div className="mb-16">
-            <div className="text-label text-accent mb-4">OUR EXPERTISE</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              Comprehensive Power & Telecom Solutions
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Power Solutions */}
-            <div className="border-l-4 border-accent pl-8">
-              <div className="flex items-center gap-3 mb-4">
-                <Zap className="w-8 h-8 text-accent" />
-                <h3 className="text-2xl font-bold text-foreground">Power Solutions</h3>
-              </div>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Industrial electrical wiring, power factor board installation, and medium/high voltage systems up to 32kV. We provide complete pre-commissioning and commissioning services with 24/7 emergency support.
-              </p>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">▸</span>
-                  <span>Industrial Electrical Wiring (LV & MV)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">▸</span>
-                  <span>Generator Installation & Commissioning (5kVA – 970kVA)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">▸</span>
-                  <span>Power Factor Board Design & Installation</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">▸</span>
-                  <span>Electrical Maintenance & Troubleshooting</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Telecommunications */}
-            <div className="border-l-4 border-accent pl-8">
-              <div className="flex items-center gap-3 mb-4">
-                <Radio className="w-8 h-8 text-accent" />
-                <h3 className="text-2xl font-bold text-foreground">Telecommunications</h3>
-              </div>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Comprehensive telecommunications infrastructure design, installation, and maintenance. Expert antenna installations for TV, radio, and mobile communication networks across PNG.
-              </p>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">▸</span>
-                  <span>Telecommunications System Design & Installation</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">▸</span>
-                  <span>Antenna Installation & Maintenance</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">▸</span>
-                  <span>Tower Rigging & Climbing Services</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1">▸</span>
-                  <span>Network Infrastructure Support</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20">
-        <div className="container">
-          <div className="mb-16">
-            <div className="text-label text-accent mb-4">WHY CHOOSE US</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              Trusted by Leading Organizations
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Award,
-                title: "Certified Professionals",
-                description: "Licensed electricians, power engineers, and communications technicians with extensive industry credentials."
-              },
-              {
-                icon: Shield,
-                title: "Quality & Compliance",
-                description: "All work adheres to industry standards with 24-month guarantees on power boards and comprehensive insurance coverage."
-              },
-              {
-                icon: Wrench,
-                title: "24/7 Support",
-                description: "Round-the-clock emergency response and maintenance services to keep your operations running smoothly."
-              },
-              {
-                icon: Zap,
-                title: "Technical Expertise",
-                description: "Over 13 years of experience handling complex industrial projects for government, mining, and telecommunications sectors."
-              },
-              {
-                icon: Clock,
-                title: "Timely Delivery",
-                description: "We understand deadlines. Our team is committed to completing projects on schedule with minimal operational disruption."
-              },
-              {
-                icon: Radio,
-                title: "Nationwide Coverage",
-                description: "Operations across Jiwaka, Enga, Morobe, Madang, and Eastern Highlands provinces with local expertise."
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-card border border-border rounded-lg p-8 hover:border-accent transition-colors">
-                <item.icon className="w-10 h-10 text-accent mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-3">{item.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects Preview */}
-      <section className="py-20 bg-card/50">
-        <div className="container">
-          <div className="mb-16">
-            <div className="text-label text-accent mb-4">RECENT WORK</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              Projects We're Proud Of
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {[
-              {
-                title: "Vodafone PNG Network Rollout",
-                category: "Telecommunications",
-                description: "Multi-province antenna installation and telecommunications infrastructure across Morobe, Eastern Highlands, Madang, and West New Britain.",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663612432874/5muACFDFmirqRbXYKufSAt/hero-telecommunications-Gotk3dUnhHq2CPnPMWwBTa.webp"
-              },
-              {
-                title: "Industrial Generator Installation",
-                category: "Power Solutions",
-                description: "Large-scale genset installation and commissioning for industrial facilities with precision electrical integration.",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663612432874/5muACFDFmirqRbXYKufSAt/hero-genset-installation-6gfGWWMigBiaks9ZAPpV5D.webp"
-              },
-              {
-                title: "ANGAU Hospital Redevelopment",
-                category: "Power & Infrastructure",
-                description: "Complete electrical system upgrade for major healthcare facility including power distribution and emergency systems.",
-                image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663612432874/5muACFDFmirqRbXYKufSAt/hero-electrical-work-BMoAZDNmTZ3dZ4UyTxahdg.webp"
-              }
-            ].map((project, idx) => (
-              <div key={idx} className="group cursor-pointer">
-                <div className="relative h-64 bg-card rounded-lg overflow-hidden mb-4">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <div className="text-label text-accent">{project.category}</div>
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
-                <p className="text-sm text-muted-foreground">{project.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Link href="/portfolio">
-              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6 text-base">
-                View Full Portfolio <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Credentials Section */}
-      <section className="py-20">
-        <div className="container">
-          <div className="mb-16">
-            <div className="text-label text-accent mb-4">CREDENTIALS</div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              Licensed & Accredited
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-card border border-border rounded-lg p-8">
-              <h3 className="text-lg font-bold text-foreground mb-6">Business Licenses</h3>
-              <ul className="space-y-4 text-sm text-muted-foreground">
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1 font-bold">✓</span>
-                  <span>PNG Power Contractors License #1570/2020</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1 font-bold">✓</span>
-                  <span>Investment Promotion Authority #6-269291</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1 font-bold">✓</span>
-                  <span>COC/TIN #500177676</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1 font-bold">✓</span>
-                  <span>VAT/TIN Registration #17982</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-8">
-              <h3 className="text-lg font-bold text-foreground mb-6">Insurance & Certifications</h3>
-              <ul className="space-y-4 text-sm text-muted-foreground">
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1 font-bold">✓</span>
-                  <span>Workers Compensation Insurance #80747-1</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1 font-bold">✓</span>
-                  <span>Public Liability Insurance #80748-1</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1 font-bold">✓</span>
-                  <span>Installation Electrician Registration #2652/2771/1469/764</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-accent mt-1 font-bold">✓</span>
-                  <span>Certified Recommendations from Industry Partners</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-card/50">
-        <div className="container text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Ready to Power Your Project?
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Contact Leather Electrical today for a consultation. Our team is available 24/7 to discuss your power and telecommunications needs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-6 text-base">
-                Get in Touch <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <Button variant="outline" className="border-border text-foreground hover:bg-card px-8 py-6 text-base">
-              Call: +675 7903 3097
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-background border-t border-border py-12">
-        <div className="container">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-                  <Zap className="w-5 h-5 text-accent-foreground" />
-                </div>
-                <span className="font-bold text-foreground">Leather Electrical</span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                PNG's trusted power and telecommunications contractor since 2011.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold text-foreground mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/services" className="hover:text-accent transition-colors">Services</Link></li>
-                <li><Link href="/portfolio" className="hover:text-accent transition-colors">Portfolio</Link></li>
-                <li><Link href="/about" className="hover:text-accent transition-colors">About Us</Link></li>
-                <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-foreground mb-4">Contact Info</h4>
-              <p className="text-sm text-muted-foreground mb-2">
-                <strong>Email:</strong> leatherelectrical.lec@gmail.com
-              </p>
-              <p className="text-sm text-muted-foreground mb-2">
-                <strong>Phone:</strong> +675 7903 3097 / 7652 4511
-              </p>
-              <p className="text-sm text-muted-foreground">
-                <strong>Available:</strong> 24/7
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold text-foreground mb-4">Service Areas</h4>
-              <ul className="space-y-1 text-sm text-muted-foreground">
-                <li>Jiwaka Province</li>
-                <li>Enga Province</li>
-                <li>Morobe Province</li>
-                <li>Madang Province</li>
-                <li>Eastern Highlands</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 Leather Electrical. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
+
+body{
+    line-height:1.6;
+    color:#333;
+}
+
+header{
+    background:#0b1f3a;
+    color:white;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+}
+
+header h1{
+    font-size:28px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+.hero{
+    background:url('https://images.unsplash.com/photo-1581092919535-7146ff1a5903?auto=format&fit=crop&w=1400&q=80') center/cover;
+    height:90vh;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero-content{
+    background:rgba(0,0,0,0.6);
+    padding:40px;
+    border-radius:10px;
+}
+
+.hero h2{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.btn{
+    background:#ff9800;
+    color:white;
+    padding:12px 25px;
+    text-decoration:none;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+section{
+    padding:70px 50px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:36px;
+    color:#0b1f3a;
+}
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:10px;
+}
+
+.services{
+    background:#f4f4f4;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.service-card{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.service-card h3{
+    margin-bottom:15px;
+    color:#0b1f3a;
+}
+
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.project-card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.project-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.project-card div{
+    padding:20px;
+}
+
+.contact{
+    background:#0b1f3a;
+    color:white;
+}
+
+.contact-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:5px;
+}
+
+.contact-form button{
+    background:#ff9800;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+footer{
+    background:#06101f;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:768px){
+
+.about,
+.contact-container{
+    grid-template-columns:1fr;
+}
+
+.hero h2{
+    font-size:35px;
+}
+
+header{
+    flex-direction:column;
+}
+
+nav{
+    margin-top:15px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Leather Electrical</h1>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO SECTION -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+    <h2>Your Electrical Specialist</h2>
+
+    <p>
+        Professional Electrical Construction, Installation &
+        Maintenance Services Across Papua New Guinea
+    </p>
+
+    <a href="#contact" class="btn">Contact Us</a>
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title">About Us</h2>
+
+<div class="about">
+
+<div>
+    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80">
+</div>
+
+<div>
+    <h3>Who We Are</h3>
+
+    <p>
+        Leather Electrical is a PNG-owned electrical contracting
+        company established in 2011. We specialize in Low Voltage (LV)
+        and Medium Voltage (MV) electrical installations, industrial
+        maintenance, commissioning, and electrical construction.
+    </p>
+
+    <br>
+
+    <p>
+        Our experienced team has successfully completed projects for
+        hospitals, government agencies, industrial facilities, and
+        commercial businesses throughout Papua New Guinea.
+    </p>
+
+    <br>
+
+    <p>
+        We are committed to delivering safe, reliable, and professional
+        electrical solutions that meet industry standards and client expectations.
+    </p>
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+<h2 class="section-title">Our Services</h2>
+
+<div class="service-grid">
+
+<div class="service-card">
+    <h3>Electrical Installations</h3>
+    <p>
+        LV & MV electrical installations for domestic,
+        commercial, and industrial facilities.
+    </p>
+</div>
+
+<div class="service-card">
+    <h3>Electrical Maintenance</h3>
+    <p>
+        Preventive maintenance, repairs, emergency support,
+        and electrical fault finding.
+    </p>
+</div>
+
+<div class="service-card">
+    <h3>Power Factor Boards</h3>
+    <p>
+        Repair and installation of power factor boards
+        with guaranteed workmanship.
+    </p>
+</div>
+
+<div class="service-card">
+    <h3>Lighting Installation</h3>
+    <p>
+        Professional indoor and outdoor lighting systems
+        installation and upgrades.
+    </p>
+</div>
+
+<div class="service-card">
+    <h3>Industrial Services</h3>
+    <p>
+        Plant commissioning, cable termination,
+        cable jointing, and industrial maintenance.
+    </p>
+</div>
+
+<div class="service-card">
+    <h3>24/7 Electrician Support</h3>
+    <p>
+        Reliable electrician-on-call services available
+        24 hours a day, 7 days a week.
+    </p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<h2 class="section-title">Projects Completed</h2>
+
+<div class="projects-grid">
+
+<div class="project-card">
+    <img src="https://images.unsplash.com/photo-1581092160607-ee22731d8c7d?auto=format&fit=crop&w=1200&q=80">
+
+    <div>
+        <h3>Angau Redevelopment Project</h3>
+
+        <p>
+            Electrical installation works for hospital redevelopment
+            in Lae, Morobe Province.
+        </p>
+    </div>
+</div>
+
+<div class="project-card">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80">
+
+    <div>
+        <h3>Enga Teachers College</h3>
+
+        <p>
+            Electrical infrastructure installation and maintenance
+            services for educational facilities.
+        </p>
+    </div>
+</div>
+
+<div class="project-card">
+    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80">
+
+    <div>
+        <h3>Industrial Electrical Projects</h3>
+
+        <p>
+            Industrial electrical maintenance and installation
+            services across PNG industries.
+        </p>
+    </div>
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<h2 class="section-title" style="color:white;">Contact Us</h2>
+
+<div class="contact-container">
+
+<div>
+    <h3>Leather Electrical</h3>
+
+    <br>
+
+    <p>
+        PO Box 3874<br>
+        Lae, Morobe Province<br>
+        Papua New Guinea
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Director:</strong> Ben Gurame
+    </p>
+
+    <p>
+        <strong>Phone:</strong> +675 79033097
+    </p>
+
+    <p>
+        <strong>Email:</strong> bengurame@gmail.com
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Project Manager:</strong> Manu Miamel
+    </p>
+
+    <p>
+        <strong>Email:</strong> mnilime.miamel@gmail.com
+    </p>
+
+</div>
+
+<div>
+
+<form class="contact-form">
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<input type="text" placeholder="Phone Number">
+
+<textarea rows="6" placeholder="Your Message"></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+    <p>
+        © 2026 Leather Electrical | Your Electrical Specialist
+    </p>
+</footer>
+
+</body>
+</html>
